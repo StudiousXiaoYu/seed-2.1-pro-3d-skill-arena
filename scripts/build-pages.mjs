@@ -14,6 +14,9 @@ for (const item of ['index.html', 'css', 'js', 'models', 'textures', 'ps.json'])
 
 const runtimeFiles = [
   ['node_modules/three/build/three.module.js', 'node_modules/three/build/three.module.js'],
+  // three.module.js in Three.js r182 imports this sibling module at runtime.
+  // It must be part of the Pages artifact even though the app never imports it directly.
+  ['node_modules/three/build/three.core.js', 'node_modules/three/build/three.core.js'],
   ['node_modules/three/examples/jsm', 'node_modules/three/examples/jsm'],
   ['node_modules/quarks.core/dist/quarks.core.esm.js', 'node_modules/quarks.core/dist/quarks.core.esm.js'],
   ['node_modules/three.quarks/dist/three.quarks.esm.js', 'node_modules/three.quarks/dist/three.quarks.esm.js']
