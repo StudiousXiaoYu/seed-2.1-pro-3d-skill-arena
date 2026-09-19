@@ -1,0 +1,29 @@
+{
+  "name": "3d",
+  "version": "1.1.0",
+  "description": "火柴人 3D 技能沙盒对战 Demo（Three.js + three.quarks + Soldier.glb）",
+  "type": "module",
+  "main": "js/main.js",
+  "scripts": {
+    "start": "node scripts/serve.js",
+    "serve": "node scripts/serve.js",
+    "syntax": "node scripts/syntax-check.mjs",
+    "test": "node scripts/syntax-check.mjs && node test/run-checks.mjs",
+    "build:pages": "node scripts/build-pages.mjs"
+  },
+  "keywords": [
+    "threejs",
+    "game",
+    "particles",
+    "demo"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "three": "^0.182.0",
+    "three.quarks": "^0.17.1"
+  },
+  "devDependencies": {
+    "playwright": "^1.63.0"
+  }
+}
