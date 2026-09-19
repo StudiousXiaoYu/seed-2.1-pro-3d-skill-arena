@@ -1,5 +1,5 @@
 {
-  "name": "3d",
+  "name": "3d-skill-arena",
   "version": "1.1.0",
   "description": "火柴人 3D 技能沙盒对战 Demo（Three.js + three.quarks + Soldier.glb）",
   "type": "module",
