@@ -207,9 +207,14 @@ try{
   // 窗口缩放不炸
   await page.evaluate(()=>window.__dbg.restart());
   await page.setViewportSize({width:1024,height:700});
-  await sleep(400);
-  const cw=await page.evaluate(()=>document.getElementById('scene').clientWidth);
-  check('窗口缩放画布跟随', cw===1024, 'clientWidth='+cw);
+  const resized=await waitFor(async()=>{
+    const size=await page.evaluate(()=>({
+      innerWidth:window.innerWidth,
+      clientWidth:document.getElementById('scene').clientWidth
+    }));
+    return size.innerWidth===1024&&size.clientWidth===1024?size:null;
+  },5000,'canvas resize');
+  check('窗口缩放画布跟随', resized.clientWidth===1024, JSON.stringify(resized));
   await page.setViewportSize({width:1280,height:800});
   await sleep(300);
 
