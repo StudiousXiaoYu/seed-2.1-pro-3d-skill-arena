@@ -140,6 +140,8 @@ try{
   }
   s=await waitFor(async()=>{ const x=await snap(); return x.state==='won'?x:null; },8000,'win state');
   check('击杀敌人进入 won', s.state==='won');
+  await page.waitForTimeout(1800);
+  await page.screenshot({path:join(EVID,'03-victory.png')});
   await waitFor(async()=>(await snap()).overlayShown,5000,'win overlay');
   await waitFor(
     ()=>page.evaluate(()=>Number.parseFloat(getComputedStyle(document.getElementById('enemy-hud')).opacity)<0.01),
@@ -168,7 +170,7 @@ try{
     const p=window.__dbg.dummy.group.position; return Math.hypot(p.x-4.6,p.z)<0.2; }));
   check('重开后无飘字残留', await page.evaluate(()=>document.querySelectorAll('.float-dmg').length===0));
   await sleep(300);
-  await page.screenshot({path:join(EVID,'03-result-restart.png')});
+  await page.screenshot({path:join(EVID,'04-after-restart.png')});
 
   // ---------- 4. 失败线 ----------
   await page.evaluate(()=>window.__dbg.killHero());
